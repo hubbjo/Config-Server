@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: config-server-manual
+ labels:
+   app: config-server
+spec:
+ containers:
+ - image: hubbjo/config-server
+   name: config-server
+   livenessProbe:
+     httpGet:
+# This gives a http 503 if the server is down
+#       path: /actuator/health
+       path: /actuator
+       port: 8888
+   ports:
+   - containerPort: 8888
+     protocol: TCP

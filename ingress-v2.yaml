@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: config-server-ingress 
+spec:
+  rules:
+   - host: config-server.com
+     http:
+      paths:
+        - backend:
+              serviceName: config-server-service 
+              servicePort: 8888
